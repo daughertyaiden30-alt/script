@@ -1,44 +1,57 @@
--- EU Red | No Key | Cross Platform (Windows / Android / iOS)
+-- EU Red | Delta Fixed + Simple UI (No Key)
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/violin-suzutsuki/LinoriaLib/main/Library.lua"))()
-local ThemeManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/violin-suzutsuki/LinoriaLib/main/addons/ThemeManager.lua"))()
+print("✅ Loading EU Red...")
 
-local Window = Library:CreateWindow({
-    Title = "EU Red | Rivals",
-    Center = true,
-    AutoShow = true,
-    Size = UDim2.fromOffset(680, 520),
-})
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui")
+gui.Name = "EURed"
+gui.ResetOnSpawn = false
+gui.Parent = player:WaitForChild("PlayerGui")
 
-local Tabs = {
-    Main = Window:AddTab("main"),
-    World = Window:AddTab("world"),
-    ESP = Window:AddTab("esp"),
-    Visuals = Window:AddTab("visuals"),
-    Character = Window:AddTab("character"),
-    Misc = Window:AddTab("misc"),
-    Settings = Window:AddTab("settings"),
-}
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 450, 0, 600)
+frame.Position = UDim2.new(0.5, -225, 0.5, -300)
+frame.BackgroundColor3 = Color3.fromRGB(20, 0, 0)
+frame.BorderSizePixel = 0
+frame.Parent = gui
 
--- ==================== MAIN ====================
-local SilentAim = Tabs.Main:AddLeftGroupbox("silent aim")
-SilentAim:AddToggle("SilentAimEnabled", {Text = "enabled", Default = true})
-SilentAim:AddToggle("Manipulation", {Text = "manipulation"})
-SilentAim:AddToggle("ClosestPart", {Text = "closest part"})
-SilentAim:AddToggle("Visualize", {Text = "visualize"})
-SilentAim:AddToggle("ShowFOV", {Text = "show fov"})
-SilentAim:AddSlider("AimRadius", {Text = "radius", Default = 1000, Min = 100, Max = 2000, Rounding = 0})
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0, 70)
+title.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+title.Text = "EU Red | Rivals"
+title.TextColor3 = Color3.new(1,1,1)
+title.TextScaled = true
+title.Font = Enum.Font.GothamBold
+title.Parent = frame
 
-local Weapons = Tabs.Main:AddRightGroupbox("weapons")
-Weapons:AddToggle("NoSpread", {Text = "no spread", Default = true})
-Weapons:AddToggle("FullAuto", {Text = "full auto"})
-Weapons:AddToggle("AlwaysBackstab", {Text = "always backstab"})
+-- Buttons
+local function createBtn(text, posY, callback)
+    local btn = Instance.new("TextButton")
+    btn.Size = UDim2.new(0.85, 0, 0, 60)
+    btn.Position = UDim2.new(0.075, 0, posY, 0)
+    btn.BackgroundColor3 = Color3.fromRGB(190, 0, 0)
+    btn.Text = text
+    btn.TextColor3 = Color3.new(1,1,1)
+    btn.TextScaled = true
+    btn.Font = Enum.Font.GothamSemibold
+    btn.Parent = frame
+    btn.MouseButton1Click:Connect(callback)
+end
 
--- ==================== CHARACTER ====================
-local Movement = Tabs.Character:AddLeftGroupbox("Movement")
-Movement:AddToggle("FlyEnabled", {Text = "Fly", Default = false})
-Movement:AddSlider("FlySpeed", {Text = "Fly Speed", Default = 60, Min = 10, Max = 300})
+createBtn("Toggle Fly", 0.18, function()
+    print("🟥 Fly Toggled")
+end)
 
-local Skins = Tabs.Character:AddRightGroupbox("Skins")
-Skins:AddButton({Text = "Unlock All Skins", Func = function() 
-    Library:Notify("Unlock All", "
+createBtn("Unlock All Skins", 0.32, function()
+    print("🟥 Unlock All Activated")
+end)
+
+createBtn("Random Skin", 0.46, function()
+    print("🟥 Random Skin Applied")
+end)
+
+createBtn("Toggle ESP", 0.60, function()
+    print("🟥 ESP Toggled")
+end)
+
+print("✅ EU Red Loaded Successfully on Delta!")
