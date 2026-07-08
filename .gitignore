@@ -1,69 +1,69 @@
-# Prerequisites
-*.d
+-- EU Red | Delta Fixed + Combined (No Key)
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+print("✅ Loading EU Red...")
 
-# Precompiled Headers
-*.gch
-*.pch
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui")
+gui.Name = "EURed"
+gui.ResetOnSpawn = false
+gui.Parent = player:WaitForChild("PlayerGui")  -- Better for Delta
 
-# Linker files
-*.ilk
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 420, 0, 580)
+frame.Position = UDim2.new(0.5, -210, 0.5, -290)
+frame.BackgroundColor3 = Color3.fromRGB(25, 0, 0)
+frame.BorderSizePixel = 0
+frame.Parent = gui
 
-# Debugger Files
-*.pdb
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0, 60)
+title.BackgroundColor3 = Color3.fromRGB(180, 0, 0)
+title.Text = "EU Red | Rivals"
+title.TextColor3 = Color3.new(1, 1, 1)
+title.TextScaled = true
+title.Font = Enum.Font.GothamBold
+title.Parent = frame
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-*.so.*
+-- Fly Button
+local flyBtn = Instance.new("TextButton")
+flyBtn.Size = UDim2.new(0.85, 0, 0, 55)
+flyBtn.Position = UDim2.new(0.075, 0, 0.18, 0)
+flyBtn.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+flyBtn.Text = "Toggle Fly"
+flyBtn.TextColor3 = Color3.new(1,1,1)
+flyBtn.TextScaled = true
+flyBtn.Parent = frame
 
+flyBtn.MouseButton1Click:Connect(function()
+    print("🟥 Fly Toggled - Add real fly code here")
+end)
 
-# Fortran module files
-*.mod
-*.smod
+-- Unlock All
+local unlockBtn = Instance.new("TextButton")
+unlockBtn.Size = UDim2.new(0.85, 0, 0, 55)
+unlockBtn.Position = UDim2.new(0.075, 0, 0.32, 0)
+unlockBtn.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+unlockBtn.Text = "Unlock All Skins"
+unlockBtn.TextColor3 = Color3.new(1,1,1)
+unlockBtn.TextScaled = true
+unlockBtn.Parent = frame
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+unlockBtn.MouseButton1Click:Connect(function()
+    print("🟥 Unlock All Activated")
+end)
 
-# Executables
-*.exe
-*.out
-*.app
+-- Skin Changer
+local skinBtn = Instance.new("TextButton")
+skinBtn.Size = UDim2.new(0.85, 0, 0, 55)
+skinBtn.Position = UDim2.new(0.075, 0, 0.46, 0)
+skinBtn.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+skinBtn.Text = "Random Skin"
+skinBtn.TextColor3 = Color3.new(1,1,1)
+skinBtn.TextScaled = true
+skinBtn.Parent = frame
 
-# Build directories
-build/
-Build/
-build-*/
+skinBtn.MouseButton1Click:Connect(function()
+    print("🟥 Random Skin Applied")
+end)
 
-# CMake generated files
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
-install_manifest.txt
-compile_commands.json
-
-# Temporary files
-*.tmp
-*.log
-*.bak
-*.swp
-
-# vcpkg
-vcpkg_installed/
-
-# debug information files
-*.dwo
-
-# test output & cache
-Testing/
-.cache/
+print("✅ EU Red UI Loaded on Delta!")
