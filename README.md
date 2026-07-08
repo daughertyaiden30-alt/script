@@ -1,4 +1,4 @@
--- EU Red | No Key Version for Rivals (Red Theme)
+-- EU Red | No Key | Cross Platform (Windows / Android / iOS)
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/violin-suzutsuki/LinoriaLib/main/Library.lua"))()
 local ThemeManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/violin-suzutsuki/LinoriaLib/main/addons/ThemeManager.lua"))()
@@ -7,6 +7,7 @@ local Window = Library:CreateWindow({
     Title = "EU Red | Rivals",
     Center = true,
     AutoShow = true,
+    Size = UDim2.fromOffset(680, 520),
 })
 
 local Tabs = {
@@ -35,31 +36,9 @@ Weapons:AddToggle("AlwaysBackstab", {Text = "always backstab"})
 
 -- ==================== CHARACTER ====================
 local Movement = Tabs.Character:AddLeftGroupbox("Movement")
-Movement:AddToggle("FlyEnabled", {Text = "Fly", Default = false, Callback = function(v)
-    print("Fly:", v and "ON" or "OFF")
-end})
+Movement:AddToggle("FlyEnabled", {Text = "Fly", Default = false})
 Movement:AddSlider("FlySpeed", {Text = "Fly Speed", Default = 60, Min = 10, Max = 300})
 
 local Skins = Tabs.Character:AddRightGroupbox("Skins")
 Skins:AddButton({Text = "Unlock All Skins", Func = function() 
-    Library:Notify("Unlock All", "Local skins unlocked!", 4) 
-end})
-Skins:AddButton({Text = "Random Skin", Func = function() 
-    Library:Notify("Skin Changer", "Random skin applied", 3)
-end})
-
--- ==================== RAGE ====================
-local Rage = Tabs.Misc:AddLeftGroupbox("ragebot")
-Rage:AddToggle("RageEnabled", {Text = "enabled"})
-Rage:AddToggle("VoidSpam", {Text = "void spam"})
-
--- Visuals
-Tabs.Visuals:AddLeftGroupbox("ESP"):AddToggle("ESPEnabled", {Text = "ESP Enabled", Default = true})
-
--- Red Theme
-ThemeManager:SetLibrary(Library)
-ThemeManager:SetTheme("Blood")
-ThemeManager:ApplyToTab(Tabs.Main)
-
-Library:Notify("EU Red", "No Key Version Loaded Successfully!", 6)
-print("✅ EU Red | No Key - Ready!")
+    Library:Notify("Unlock All", "
